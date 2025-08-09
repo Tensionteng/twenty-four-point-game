@@ -18,5 +18,6 @@ model/
 results/
 
 *.csv
+*.log
 
 plot_metrics.py
