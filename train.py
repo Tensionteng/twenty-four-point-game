@@ -7,7 +7,6 @@ from transformers import (
 )
 from trl import SFTTrainer, SFTConfig
 from swanlab.integration.transformers import SwanLabCallback
-from accelerate import Accelerator, PartialState
 
 
 def main():
@@ -16,7 +15,7 @@ def main():
     # --- 1. 配置与超参数定义 ---
 
     # 模型与分词器配置
-    model_id = "model"  # 使用我们选择的Qwen3-0.6B模型
+    model_id = "model/Qwen3-0.6B"  # 使用我们选择的Qwen3-0.6B模型
 
     # 数据集配置
     dataset_path = "./datasets"  # 数据集保存的目录
@@ -45,7 +44,7 @@ def main():
         report_to="none",  # 将日志报告给SwanLab
         deepspeed="deepspeed_zero2.json",  # DeepSpeed配置文件路径
         dataset_text_field="messages",  # 指定数据集中包含对话内容的字段名
-        max_length=32 * 1024,  # 序列最大长度。根据您的CoT长度和显存进行调整
+        max_length=2 * 1024,  # 序列最大长度。根据您的CoT长度和显存进行调整
         packing=False,  # Packing是一种将多个短序列打包成一个长序列的技术，对于我们的长CoT数据，应关闭
     )
 
