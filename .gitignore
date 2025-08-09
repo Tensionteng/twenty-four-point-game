@@ -16,3 +16,7 @@ datasets/
 model/
 
 results/
+
+*.csv
+
+plot_metrics.py
